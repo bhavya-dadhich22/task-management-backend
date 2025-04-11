@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
   res.send('Task Management Server Application!')
 })
 
-console.log('MONGO_URI:', MONGO_URI);
+console.log('MONGO_URI:', process.env.MONGO_URI);
 
 console.log('portNumber:', process.env.PORT);
 mongoose
@@ -28,7 +28,7 @@ mongoose
     });
   })
   .catch((err) => {
-  console.log('MONGO_URI1:', MONGO_URI);
+  console.log('MONGO_URI1:', process.env.MONGO_URI);
   console.log('portNumber1:', process.env.PORT);
   console.log("Connection failed:", err);
   });
