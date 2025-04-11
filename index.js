@@ -14,17 +14,23 @@ app.get('/', function (req, res) {
   res.send('Task Management Server Application!')
 })
 
+console.log('MONGO_URI:', MONGO_URI);
+
+console.log('portNumber:', process.env.PORT);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to database111!");
     const portNumber = process.env.PORT || 8000;
+    console.log('portNumber:', portNumber);
     app.listen(portNumber, () => {
       console.log(`Server is running on port: ${portNumber}`);
     });
   })
-  .catch(() => {
-    console.log("Connection failed!");
+  .catch((err) => {
+  console.log('MONGO_URI1:', MONGO_URI);
+  console.log('portNumber1:', process.env.PORT);
+  console.log("Connection failed:", err);
   });
 
 app.use("/api/tasks", taskRoutes);
